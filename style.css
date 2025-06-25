@@ -417,7 +417,7 @@ body.flipped .background-animation {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  z-index: 5; /* Ensure social links are interactive */
+  z-index: 10; /* Ensure social links are interactive */
 }
 .social-link::before {
   content: '';

@@ -106,19 +106,16 @@ function initializeSocialLinks() {
     });
     
     // Click analytics (replace with your tracking code)
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
+    // link.addEventListener('click', function(e) {
+    //   const platform = this.getAttribute('data-platform');
+    //   console.log(`Social link clicked: ${platform}`);
       
-      const platform = this.getAttribute('data-platform');
-      console.log(`Social link clicked: ${platform}`);
+    //   // Allow the link to open normally - don't prevent default behavior
+    //   // Just show a quick notification for user feedback
+    //   showNotification(`Opening ${platform.charAt(0).toUpperCase() + platform.slice(1)} profile...`);
       
-      // Here you would typically redirect to the actual social media profile
-      // window.open('your-social-media-url', '_blank');
-      
-      // For demo purposes, show an alert
-      showNotification(`Opening ${platform.charAt(0).toUpperCase() + platform.slice(1)} profile...`);
-    });
+    //   // The link will open naturally due to the href attribute in HTML
+    // });
   });
 }
 
@@ -153,17 +150,19 @@ function initializeCTAButton() {
   
   if (ctaButton) {
     ctaButton.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
+      // Only prevent default if this is not a real link
+      if (!this.href || this.href === '#') {
+        e.preventDefault();
+      }
       
       // Create ripple effect
       createRippleEffect(this, e);
       
       // Simulate contact action
       setTimeout(() => {
-        showNotification('Thank you for your interest! John will get back to you shortly.');
-        // Here you would typically open a contact form or redirect
-        // window.location.href = 'mailto:john@kgventure.studio';
+        showNotification('Thank you for your interest! We will get back to you shortly.');
+        // For real implementation, you would redirect to contact form or email
+        // window.location.href = 'mailto:adinucorera.k@kgkite.ac.in';
       }, 300);
     });
   }
@@ -254,6 +253,76 @@ function showNotification(message) {
   }, 3000);
 }
 
+// Contact links functionality
+function initializeContactLinks() {
+  const contactLinks = document.querySelectorAll('.contact-item a');
+  
+  contactLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const text = this.querySelector('span').textContent;
+      console.log(`Contact link clicked: ${text}`);
+      
+      // Show feedback for contact interactions
+      if (this.href.includes('tel:')) {
+        showNotification('Calling phone number...');
+      } else if (this.href.includes('mailto:')) {
+        showNotification('Opening email client...');
+      } else if (this.href.includes('maps')) {
+        showNotification('Opening location in maps...');
+      }
+    });
+  });
+}
+
+// Keyboard navigation for card elements
+function initializeKeyboardNavigation() {
+  const interactiveElements = document.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+  
+  interactiveElements.forEach(element => {
+    element.addEventListener('keydown', function(e) {
+      // Handle Enter key for activation
+      if (e.key === 'Enter' && this.tagName !== 'A') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+}
+
+// Venture studio social links
+function initializeVentureStudioLinks() {
+  const ventureLinks = document.querySelectorAll('.venture-social-link');
+  
+  ventureLinks.forEach((link, index) => {
+    // Add staggered entrance animation
+    link.style.animationDelay = `${0.5 + (index * 0.1)}s`;
+    
+    // Enhanced hover effects
+    link.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-2px) scale(1.05)';
+      
+      const platform = this.getAttribute('data-platform');
+      if (platform === 'linkedin') {
+        this.style.boxShadow = '0 6px 20px rgba(0, 119, 181, 0.4)';
+      } else {
+        this.style.boxShadow = '0 6px 20px rgba(255, 107, 53, 0.4)';
+      }
+    });
+    
+    link.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+      this.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)';
+    });
+    
+    // Click tracking
+    link.addEventListener('click', function() {
+      const platform = this.getAttribute('data-platform');
+      console.log(`Venture studio link clicked: ${platform}`);
+      showNotification(`Opening company ${platform} page...`);
+    });
+  });
+}
+
 // Keyboard accessibility
 function initializeKeyboardSupport() {
   const cardContainer = document.querySelector('.card-container');
@@ -334,11 +403,13 @@ document.addEventListener('DOMContentLoaded', function() {
   initializeProfileEffects();
   initializeSocialLinks();
   initializeServiceCards();
+  initializeCTAButton();
   initializeContactLinks();
   initializeKeyboardNavigation();
   initializeVentureStudioLinks();
   initializeKeyboardSupport();
   initializeIntersectionObserver();
+  addRippleCSS();
   
   // Add performance monitoring
   if ('performance' in window) {
