@@ -1,7 +1,33 @@
 /* ===== PREMIUM DIGITAL BUSINESS CARD - INTERACTIVE FUNCTIONALITY ===== */
 
+// Performance optimization
+const preferredReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
 // Card flip state
 let isFlipped = false;
+
+// Preload critical resources
+function preloadResources() {
+  const images = [
+    'assets/pic.jpg',
+    'assets/vs-logo2.png'
+  ];
+  
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
+// Enhanced error handling for missing elements
+function safeQuerySelector(selector, context = document) {
+  try {
+    return context.querySelector(selector);
+  } catch (error) {
+    console.warn(`Element not found: ${selector}`);
+    return null;
+  }
+}
 
 // Main flip function
 function flipCard() {
@@ -296,3 +322,41 @@ function playFlipSound() {
   });
 }
 */
+
+// Enhanced DOMContentLoaded initialization
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('🚀 KG Venture Studio Digital Business Card - Initialized');
+  
+  // Preload resources for better performance
+  preloadResources();
+  
+  // Initialize all interactive features
+  initializeProfileEffects();
+  initializeSocialLinks();
+  initializeServiceCards();
+  initializeContactLinks();
+  initializeKeyboardNavigation();
+  initializeVentureStudioLinks();
+  initializeKeyboardSupport();
+  initializeIntersectionObserver();
+  
+  // Add performance monitoring
+  if ('performance' in window) {
+    window.addEventListener('load', () => {
+      const loadTime = performance.now();
+      console.log(`⚡ Page loaded in ${Math.round(loadTime)}ms`);
+    });
+  }
+  
+  // Add touch feedback for mobile
+  if ('ontouchstart' in window) {
+    document.body.classList.add('touch-device');
+  }
+  
+  // Handle orientation changes on mobile
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
+  });
+});
