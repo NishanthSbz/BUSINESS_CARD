@@ -900,7 +900,7 @@ body.flipped .background-animation {
 @media (max-width: 768px) {
   .card-container {
     width: min(96vw, var(--card-max-width));
-    height: 95vh;
+    /* height: 5vh; */
   }
   
   .front .card-content {
