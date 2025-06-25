@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KG Venture Studio - Premium Digital Business Card</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="background-animation"></div>
+  
+  <!-- Business Card Container -->
+  <div class="card-container" onclick="flipCard()">
+    <div class="card" id="business-card">
+      
+      <!-- FRONT SIDE - Entrepreneur Details -->
+      <div class="card-face front">
+        <div class="card-border"></div>
+        <div class="card-content">
+          
+          <!-- Left Section - Profile -->
+          <div class="profile-section">
+            <div class="profile-image-container">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face&auto=format&bg=000000" 
+                   alt="John Doe - Serial Entrepreneur" 
+                   class="profile-image"/>
+              <div class="profile-glow"></div>
+            </div>
+          </div>
+          
+          <!-- Right Section - Details -->
+          <div class="details-section">
+            <div class="name-title">
+              <h1 class="entrepreneur-name">John Doe</h1>
+              <p class="entrepreneur-title">Serial Entrepreneur & Innovator</p>
+              <p class="entrepreneur-quote">"Turning bold visions into market realities"</p>
+            </div>
+            
+            <div class="contact-grid">
+              <div class="contact-item">
+                <i class="fas fa-phone contact-icon"></i>
+                <span>+1 (555) 123-4567</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope contact-icon"></i>
+                <span>john@kgventure.studio</span>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt contact-icon"></i>
+                <span>San Francisco, CA</span>
+              </div>
+            </div>
+            
+            <div class="social-media">
+              <a href="#" class="social-link" data-platform="linkedin">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-link" data-platform="twitter">
+                <i class="fab fa-x-twitter"></i>
+              </a>
+              <a href="#" class="social-link" data-platform="instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-link" data-platform="github">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BACK SIDE - KG Venture Studio -->
+      <div class="card-face back">
+        <div class="card-border"></div>
+        <div class="card-content">
+          
+          <!-- Studio Branding -->
+          <div class="studio-header">
+            <h2 class="studio-name">KG VENTURE STUDIO</h2>
+            <div class="animated-underline"></div>
+            <p class="studio-tagline">Empowering Visionaries</p>
+          </div>
+          
+          <!-- Services Grid -->
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <h3>Incubation</h3>
+              <p>From idea to market-ready startup</p>
+            </div>
+            
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <h3>Strategy</h3>
+              <p>Strategic planning & innovation</p>
+            </div>
+            
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-globe-americas"></i>
+              </div>
+              <h3>Global Scale</h3>
+              <p>Worldwide expansion support</p>
+            </div>
+          </div>
+          
+          <!-- CTA Button -->
+          <div class="cta-section">
+            <a href="#" class="cta-button" onclick="event.stopPropagation()">
+              <span class="cta-text">Let's Connect</span>
+              <div class="cta-arrow">
+                <i class="fas fa-arrow-right"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
